@@ -1,0 +1,12 @@
+ec\edu\espol\proyecto\Main.class
+ec\edu\espol\model\Moto.class
+ec\edu\espol\model\Camioneta.class
+ec\edu\espol\model\Comprador.class
+ec\edu\espol\model\Menu.class
+ec\edu\espol\model\Carro.class
+ec\edu\espol\model\Usuario.class
+ec\edu\espol\model\Oferta.class
+ec\edu\espol\model\Vendedor.class
+ec\edu\espol\util\Util.class
+ec\edu\espol\model\Vehiculo.class
+ec\edu\espol\model\Registro.class
