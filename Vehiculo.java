@@ -13,12 +13,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  *
  * @author Dell
  */
 public class Vehiculo implements Serializable{
+    protected ImageView img ;
+    protected int idVendedor;
     protected int id;
     protected String placa;
     protected String marca;
@@ -44,8 +48,11 @@ public class Vehiculo implements Serializable{
         this.precio = precio;
         this.ofertas = new ArrayList<>();
     }
+   
     
-    public Vehiculo( String marca,String modelo, String placa, String tipo_motor, int anio, String color, int recorrido, double precio){
+    public Vehiculo( String marca,int idVendedor, String modelo, String placa, String tipo_motor, int anio, String color, int recorrido, double precio){
+        this.img = new ImageView(new Image(placa+".jpg"));
+        this.idVendedor = idVendedor;
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -55,6 +62,7 @@ public class Vehiculo implements Serializable{
         this.color = color;
         this.precio = precio;
     }
+    public Vehiculo(){}
 
     public void setId(int id)
     {
@@ -64,6 +72,11 @@ public class Vehiculo implements Serializable{
     {
         return id;
     }
+
+    public int getIdVendedor() {
+        return idVendedor;
+    }
+    
     public String getPlaca() {
         return placa;
     }
@@ -199,17 +212,44 @@ public class Vehiculo implements Serializable{
         return nombres;
     }
    
-   public static ArrayList<Vehiculo> ordenPrecio(ArrayList<Vehiculo> vehiculos){
-        vehiculos.sort((Vehiculo v1,Vehiculo v2)-> {
-            double resthis = (double)(v1.precio);
-            double resp = (double)(v2.precio);
-            if (resthis == resp)
-            return 0;
-            if (resthis>resp)
-            return 1;
-            else
-            return -1;
-        });
-        return vehiculos;        
+   public static ArrayList<Vehiculo> filtrarVehiculos(ArrayList<Vehiculo> vehiculos, Object o, int recoinicio, int recofinal, int anioini, int aniofin, int preini, int prefin){
+       ArrayList<Vehiculo> vehiculosFiltrados = new ArrayList<>();
+       for (Vehiculo v : vehiculos){
+           if (v.getClass() == o.getClass() ){
+               if (v.recorrido < recoinicio || v.recorrido> recofinal && v.anio < anioini || v.anio> aniofin && v.precio < preini || v.precio> prefin ){
+                   vehiculosFiltrados.add(v);
+                } 
+           }
+       } return vehiculosFiltrados;
    }
+   
+   public static ArrayList<Vehiculo> ordenPor(ArrayList<Vehiculo> vehiculos, String orden){
+        if (orden.equals("Precio")){
+            vehiculos.sort((Vehiculo v1,Vehiculo v2)-> {
+                double resthis = (double)(v1.precio);
+                double resp = (double)(v2.precio);
+                if (resthis == resp)
+                return 0;
+                if (resthis>resp)
+                return 1;
+                else
+                return -1;
+            });
+            return vehiculos;
+        }
+        else{
+            vehiculos.sort((Vehiculo v1,Vehiculo v2)-> {
+                double resthis = (double)(v1.anio);
+                double resp = (double)(v2.anio);
+                if (resthis == resp)
+                return 0;
+                if (resthis>resp)
+                return 1;
+                else
+                return -1;
+            });
+            return vehiculos;
+        }
+   }
+   
 }

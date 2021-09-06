@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.OfertasCompradorController">
+   <children>
+      <TableView fx:id="table" layoutX="162.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+        <columns>
+            <TableColumn fx:id="img" prefWidth="75.0" />
+          <TableColumn fx:id="marca" prefWidth="74.4000015258789" text="Marca" />
+          <TableColumn fx:id="modelo" prefWidth="71.20001220703125" text="Modelo" />
+            <TableColumn fx:id="placa" prefWidth="72.79998779296875" text="Placa" />
+            <TableColumn fx:id="motor" prefWidth="78.39996337890625" text="Motor" />
+            <TableColumn fx:id="anio" prefWidth="58.39996337890625" text="Año" />
+            <TableColumn fx:id="color" prefWidth="82.39996337890625" text="Color" />
+            <TableColumn fx:id="recorrido" prefWidth="93.60000610351562" text="Recorrido" />
+            <TableColumn fx:id="precio" prefWidth="100.79998779296875" text="Precio" />
+        </columns>
+      </TableView>
+      <VBox layoutX="700.0" layoutY="25.0" prefHeight="225.0" prefWidth="100.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precio a ofertar" />
+            <TextField fx:id="oferta" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
